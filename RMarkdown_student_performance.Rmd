@@ -1,0 +1,90 @@
+---
+title: "Student Performance Analysis"
+output: html_document
+date: "2024-08-04"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{studen performance}
+install.packages("tidyverse")
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(readr)
+Student_performance_data_ <- read_csv("students_performance_kaggle/Student_performance_data _.csv")
+# view the data for missing values 
+View(Student_performance_data_)
+
+# Summarize the GPA
+Student_performance_data_ %>%
+  select(GPA) %>%  summary()
+
+# calcuate average GPA based on parent support
+average_gpa <- Student_performance_data_ %>% group_by(ParentalSupport) %>% summarize(AverageGPA = mean(GPA, na.rm = TRUE))
+
+# avg GPA based on tutoring status
+GPA_avg_tutor <- Student_performance_data_ %>% group_by(Tutoring) %>% summarize(AverageGPA = mean(GPA, na.rm = TRUE))
+
+#avg GPA based on extra activities
+GPA_avg_extra <- Student_performance_data_ %>% group_by(Extracurricular) %>% summarize(AverageGPA = mean(GPA, na.rm = TRUE))
+
+# avg GPA based on participating in sports
+GPA_avg_Sports <- Student_performance_data_ %>% group_by(Sports) %>% summarize(AverageGPA = mean(GPA, na.rm = TRUE))
+
+# avg GPA based on participating in music act
+GPA_avg_Music <- Student_performance_data_ %>% group_by(Music) %>% summarize(AverageGPA = mean(GPA, na.rm = TRUE))
+
+# avg GPA based on volunteering act
+GPA_avg_Volun <- Student_performance_data_ %>% group_by(Volunteering) %>% summarize(AverageGPA = mean(GPA, na.rm = TRUE))
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+# plot for GPA with weekly study hours
+ggplot(data = Student_performance_data_, aes(x = StudyTimeWeekly, y = GPA)) +
+     geom_point() +
+     geom_smooth(method = "lm", se = FALSE) +
+     labs(title = "Study Time Per Week vs. GPA",
+     x = "Study Time Weekly (hours)",
+     y = "GPA") +
+     theme_minimal()
+
+# plot for GPA with total absence
+ ggplot(data = Student_performance_data_ , aes(x=Absences,y=GPA)) + 
+   geom_point() + geom_smooth(method = "lm", se = FALSE) + 
+   labs(title = "Absence vs GPA",x = "Absences (total)", y = "GPA") + 
+   theme_minimal()
+ 
+# plot for avg gpa with parent support
+ ggplot(data = average_gpa, aes(x=factor(ParentalSupport), y = AverageGPA)) + geom_bar(stat = "identity") + geom_text(aes(label = round(AverageGPA,2)), vjust = -0.5) + labs(title = "Avg GPA vs Parent Support", x ="Parent Support (0: None, 4: Very High",y = "Average GPA") + theme_minimal()
+
+# plot for avg GPA with tutoring status
+ggplot(data = GPA_avg_tutor, aes(x=factor(Tutoring), y = AverageGPA)) + geom_bar(stat = "identity") + geom_text(aes(label = round(AverageGPA, 2)), vjust = -0.5) + labs(title = "Avg GPA vs Tutoring", x ="Tutoring (0: No, 1: Yes)", y = "Average GPA") + theme_minimal()
+
+# plot for avg GPA with extracurricular act
+ggplot(data = GPA_avg_extra, aes(x=factor(Extracurricular), y = AverageGPA)) + geom_bar(stat = "identity") + geom_text(aes(label = round(AverageGPA, 2)), vjust = -0.5) + labs(title = "Avg GPA vs Extracurricular", x ="Extracurricular (0: No, 1: Yes)", y = "Average GPA") + theme_minimal()
+
+# plot for sports
+ggplot(data = GPA_avg_Sports, aes(x=factor(Sports), y = AverageGPA)) + geom_bar(stat = "identity") + geom_text(aes(label = round(AverageGPA, 2)), vjust = -0.5) + labs(title = "Avg GPA vs Sports", x ="Sports (0: No, 1: Yes)", y = "Average GPA") + theme_minimal()
+
+#plot for music
+ggplot(data = GPA_avg_Music, aes(x=factor(Music), y = AverageGPA)) + geom_bar(stat = "identity") + geom_text(aes(label = round(AverageGPA, 2)), vjust = -0.5) + labs(title = "Avg GPA vs Music", x ="Music (0: No, 1: Yes)", y = "Average GPA") + theme_minimal()
+
+#plot for volunteer
+ggplot(data = GPA_avg_Volun, aes(x=factor(Volunteering), y = AverageGPA)) + geom_bar(stat = "identity") + geom_text(aes(label = round(AverageGPA, 2)), vjust = -0.5) + labs(title = "Avg GPA vs Volunter", x ="Volunter (0: No, 1: Yes)", y = "Average GPA") + theme_minimal()
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
