@@ -102,6 +102,7 @@ ggplot(data = GPA_avg_Sports, aes(x=factor(Sports), y = AverageGPA)) +
   geom_bar(stat = "identity") + geom_text(aes(label = round(AverageGPA, 2)), vjust = -0.5) + 
   labs(title = "Avg GPA vs Sports", x ="Sports (0: No, 1: Yes)", y = "Average GPA") + 
   theme_minimal() # on Sports
+
 <img width="306" alt="image" src="https://github.com/user-attachments/assets/ea72abb4-3b8f-4df2-ac55-a6a2ccbae31f">
 
 
@@ -112,9 +113,8 @@ ggplot(data = GPA_avg_Music, aes(x=factor(Music), y = AverageGPA)) +
   geom_bar(stat = "identity") + geom_text(aes(label = round(AverageGPA, 2)), vjust = -0.5) + 
   labs(title = "Avg GPA vs Music", x ="Music (0: No, 1: Yes)", y = "Average GPA") + 
   theme_minimal() #on music
-<img width="302" alt="image" src="https://github.com/user-attachments/assets/c4664609-8683-4b85-a8d7-0108e27dbb66">
 
-  
+<img width="302" alt="image" src="https://github.com/user-attachments/assets/c4664609-8683-4b85-a8d7-0108e27dbb66">
 
 GPA_avg_Volun <- Student_performance_data_ %>% group_by(Volunteering) %>% summarize(AverageGPA = mean(GPA, na.rm = TRUE))
 
