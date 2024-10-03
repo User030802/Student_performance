@@ -36,7 +36,8 @@ ggplot(data = Student_performance_data_, aes(x = StudyTimeWeekly, y = GPA)) +
        x = "Study Time Weekly (Hours)", 
        y = "GPA") +
   theme_minimal()
-  <img width="553" alt="image" src="https://github.com/user-attachments/assets/71d3ac2d-f50f-4ae2-9735-40c99ca8fa44">
+
+<img width="553" alt="image" src="https://github.com/user-attachments/assets/71d3ac2d-f50f-4ae2-9735-40c99ca8fa44">
 
 # 2 Correlation
 correlation_value <- cor(Student_performance_data_$StudyTimeWeekly, Student_performance_data_$GPA)
@@ -47,6 +48,7 @@ correlation_value <- cor(Student_performance_data_$StudyTimeWeekly, Student_perf
 ggplot(data = Student_performance_data_ , aes(x=Absences,y=GPA)) 
 + geom_point() + geom_smooth(method = "lm", se = FALSE) +
 + labs(title = "Absence vs GPA",x = "Absences (total)", y = "GPA") + theme_minimal()
+
 <img width="548" alt="image" src="https://github.com/user-attachments/assets/36d9539f-251c-4360-b162-cf7b0ba80a8e">
 
 # 4 Ran same correlation as bove
@@ -58,6 +60,7 @@ ggplot(data = Student_performance_data_, aes(x = ParentalSupport, y = GPA)) +
        x = "Parental Support (0-4)",
        y = "GPA") +
   theme_minimal()
+
 <img width="544" alt="image" src="https://github.com/user-attachments/assets/10608995-41f2-42ef-9168-0a54e6147e62">
 
 # 6 Averages
@@ -68,6 +71,7 @@ ggplot(data = average_gpa, aes(x = factor(ParentalSupport), y = AverageGPA)) +
        x = "Parent Support (0: None, 4: Very High)", 
        y = "Average GPA") + 
   theme_minimal()
+
 <img width="306" alt="image" src="https://github.com/user-attachments/assets/e5f20469-840e-4d85-95b9-21d6046e4f76">
 
 # 7 Tutor to GPA
