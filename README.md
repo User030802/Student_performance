@@ -96,6 +96,7 @@ ggplot(data = GPA_avg_extra, aes(x=factor(Extracurricular), y = AverageGPA)) +
 
 <img width="303" alt="image" src="https://github.com/user-attachments/assets/b5da9940-ffea-4436-a677-40db500b2ce9">
 
+
 GPA_avg_Sports <- Student_performance_data_ %>% group_by(Sports) %>% summarize(AverageGPA = mean(GPA, na.rm = TRUE))
 
 ggplot(data = GPA_avg_Sports, aes(x=factor(Sports), y = AverageGPA)) + 
@@ -107,6 +108,7 @@ ggplot(data = GPA_avg_Sports, aes(x=factor(Sports), y = AverageGPA)) +
 
 
 
+
 GPA_avg_Music <- Student_performance_data_ %>% group_by(Music) %>% summarize(AverageGPA = mean(GPA, na.rm = TRUE))
 
 ggplot(data = GPA_avg_Music, aes(x=factor(Music), y = AverageGPA)) +
@@ -115,6 +117,7 @@ ggplot(data = GPA_avg_Music, aes(x=factor(Music), y = AverageGPA)) +
   theme_minimal() #on music
 
 <img width="302" alt="image" src="https://github.com/user-attachments/assets/c4664609-8683-4b85-a8d7-0108e27dbb66">
+
 
 GPA_avg_Volun <- Student_performance_data_ %>% group_by(Volunteering) %>% summarize(AverageGPA = mean(GPA, na.rm = TRUE))
 
