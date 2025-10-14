@@ -7,7 +7,7 @@ library(tidyr)
 library(readr)
 
 # import the data
-Student_performance_data_ <- ead_csv("students_performance_kaggle/Student_performance_data _.csv")
+Student_performance_data_ <- read_csv("students_performance_kaggle/Student_performance_data _.csv")
 
 # Make your name shorter dont be like me :()
 View(Student_performance_data_) # quick check for data format
